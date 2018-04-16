@@ -10,6 +10,7 @@ function getRepoContributors(repoOwner, repoName, callback) {
 
 		headers: {
 			'User-Agent': 'request',
+			'Authorization': 'token ' + secrets.GITHUB_TOKEN,
 		}
 	};
 
