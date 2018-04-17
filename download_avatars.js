@@ -25,13 +25,15 @@ function getRepoContributors(repoOwner, repoName, callback) {
 
 function downloadImageByURL(url, filePath) {
 	request.get(url)
-	request.pipe(fs.createWriteStream(filePath));
+	       .pipe(fs.createWriteStream('./img/' + filePath + '.png'));
 }
 
 	getRepoContributors("jquery", "jquery", function (err, result) {
 		console.log("Errors: ", err);
 
 		result.forEach(function(contributor) {
-			console.log(contributor.avatar_url)
+			// console.log(contributor.avatar_url)
+      // console.log(contributor.login);
+      downloadImageByURL(contributor.avatar_url, contributor.login)
 		});
 	});
